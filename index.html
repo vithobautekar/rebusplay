@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rebus Puzzle Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">🧩 REBUS</div>
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-num" id="score">0</span>
+          <span class="stat-label">Score</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="streak">0</span>
+          <span class="stat-label">Streak 🔥</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="puzzleCount">1</span>
+          <span class="stat-label">Puzzle #</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN GAME AREA -->
+  <main>
+
+    <!-- PUZZLE CARD -->
+    <div class="card" id="puzzleCard">
+      <div class="card-inner">
+        <div class="puzzle-number" id="puzzleNumber">#001</div>
+        <div class="clue-box" id="clueBox">
+          <!-- clue rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- FEEDBACK PANEL (hidden until answered) -->
+    <div class="feedback" id="feedback" aria-live="polite"></div>
+
+    <!-- INPUT AREA -->
+    <div class="input-area" id="inputArea">
+      <input
+        type="text"
+        id="answerInput"
+        placeholder="Type your answer…"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        aria-label="Your answer"
+      />
+      <div class="btn-row">
+        <button class="btn btn-submit" id="submitBtn" onclick="submitAnswer()">Submit</button>
+        <button class="btn btn-forfeit" id="forfeitBtn" onclick="forfeit()">Forfeit</button>
+      </div>
+    </div>
+
+    <!-- NEXT BUTTON (hidden until answered) -->
+    <div class="next-area" id="nextArea" style="display:none;">
+      <button class="btn btn-next" onclick="nextPuzzle()">Next Puzzle →</button>
+    </div>
+
+  </main>
+
+  <!-- SUMMARY MODAL -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none;">
+    <div class="modal">
+      <div class="modal-emoji" id="modalEmoji">🏆</div>
+      <h2 class="modal-title" id="modalTitle">Session Over!</h2>
+      <p class="modal-subtitle" id="modalSubtitle"></p>
+      <div class="modal-stats">
+        <div class="mstat"><span id="mScore">0</span><small>Total Score</small></div>
+        <div class="mstat"><span id="mCorrect">0</span><small>Correct</small></div>
+        <div class="mstat"><span id="mForfeit">0</span><small>Forfeited</small></div>
+        <div class="mstat"><span id="mBestStreak">0</span><small>Best Streak</small></div>
+      </div>
+      <button class="btn btn-next" onclick="restartGame()">Play Again 🎮</button>
+    </div>
+  </div>
+
+  <script src="puzzles.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
